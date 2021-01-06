@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG Snowmand</title>
+    <title>start-IT Hovedside med alle Oppgave</title>
+    <link rel="stylesheet" href="../main.css">
 </head>
 <body>
-    <svg height="350" width="300" z-index="-1">
-        <circle cx="100" cy="50" r="40" stroke="black" stroke-width="3" fill="white" />
-        <circle cx="90" cy="40" r="5" stroke="black" stroke-width="1" fill="black" />
-        <circle cx="110" cy="40" r="5" stroke="black" stroke-width="1" fill="black" />
-        <circle cx="100" cy="55" r="5" stroke="black" stroke-width="1" fill="orange" />
-        <circle cx="100" cy="140" r="50" stroke="black" stroke-width="3" fill="white" />
-        <circle cx="100" cy="140" r="5" stroke="black" stroke-width="1" fill="black" />
-        <circle cx="100" cy="250" r="60" stroke="black" stroke-width="3" fill="white" />
-        <circle cx="100" cy="250" r="5" stroke="black" stroke-width="1" fill="black" />
-    </svg>
+    <div class="page">
+        <div class="header">
+            <h1>SVG Snowman</h1>
+        </div>
+        <div class="menu">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./tasks/snowman" class="active">Snowman (SVG)</a></li>
+                <li><a href="./tasks/cssgrid-oppgave.html">CSS Grid oppgave</a></li>
+            </ul>
+        </div>
+        <div class="mainContent">
+            <svg height="350" width="300" z-index="-1">
+                <circle cx="100" cy="50" r="40" stroke="black" stroke-width="3" fill="white" />
+                <circle cx="90" cy="40" r="5" stroke="black" stroke-width="1" fill="black" />
+                <circle cx="110" cy="40" r="5" stroke="black" stroke-width="1" fill="black" />
+                <circle cx="100" cy="55" r="5" stroke="black" stroke-width="1" fill="orange" />
+                <circle cx="100" cy="140" r="50" stroke="black" stroke-width="3" fill="white" />
+                <circle cx="100" cy="140" r="5" stroke="black" stroke-width="1" fill="black" />
+                <circle cx="100" cy="250" r="60" stroke="black" stroke-width="3" fill="white" />
+                <circle cx="100" cy="250" r="5" stroke="black" stroke-width="1" fill="black" />
+            </svg>
+            <!-- Here comes the main content  
+            check the active class is at the correct link
+            change the title
 
-    
+            -->
+
+        </div>
+        <div class="footer">
+            <p>sist oppdatert: 06.01.2021 Marten Gransow-Broockmann</p>
+        </div>
+    </div>
+<script src="app.js"></script>
 </body>
 </html>
