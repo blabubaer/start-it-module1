@@ -14,7 +14,7 @@
             height: 100vh;
             display: grid;
             grid-template-columns: 200px 1fr;
-            grid-template-rows: 100px 10fr 20px;
+            grid-template-rows: 100px 10fr 40px;
             grid-template-areas: 'header header' 
                                  'menu mainContent'
                                  'footer footer';
@@ -43,10 +43,15 @@
             background-color: rgb(161, 159, 159);
             grid-area: footer;
             padding: 0;
-            text-align: right;
             color: white;
+            text-align: right;
 
         }
+        div.footer.p {
+            position:absolute;
+            bottom: 5px;
+        }
+
         a:link {
             color: red;
         }
@@ -108,7 +113,7 @@
             <p>Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Viverra accumsan in nisl nisi. Malesuada pellentesque elit eget gravida cum. At augue eget arcu dictum varius. Est velit egestas dui id ornare arcu odio. Mauris a diam maecenas sed enim. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Quisque sagittis purus sit amet. Facilisis volutpat est velit egestas dui id ornare arcu odio. Pellentesque habitant morbi tristique senectus et netus. Dui ut ornare lectus sit amet est. Bibendum at varius vel pharetra vel turpis nunc eget lorem. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Malesuada proin libero nunc consequat. Amet volutpat consequat mauris nunc congue nisi. Eu nisl nunc mi ipsum.</p>
         </div>
         <div class="footer">
-            Copyright <span>&#169;</span> 2014 Jake Wright
+            <p>Copyright <span>&#169;</span> 2014 Jake Wright</p>
         </div>
     </div>
 </body>
