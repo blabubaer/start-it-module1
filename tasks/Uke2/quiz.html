@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <title>Quiz-Oppgave (UKE 2)</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Super-Quiz</h1>
+        </div>
+        <div class="question" id="q1">
+            <h2>1. What year did the Titanic sink in the Atlantic Ocean on 15 April, on its maiden voyage from Southampton?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer" onclick="checkanswer(this)" id="a1_1">1909</div>
+            <div class="answer" onclick="checkanswer(this)" id="a1_2">1912</div>
+
+            <div class="answer" onclick="checkanswer(this)" id="a1_3">1956</div>
+        </div>
+
+        <div class="question" id="q2">
+            <h2>What is the name of the biggest technology company in South Korea?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer" onclick="checkanswer(this)" id="a2_1">Samsung</div>
+
+            <div class="answer" onclick="checkanswer(this)" id="a2_2">Hyundai</div>
+            <div class="answer" onclick="checkanswer(this)" id="a2_3">LG Chem</div>
+        </div>
+
+        <div class="question" id="q3">
+            <h2>Which metal was discovered by Hans Christian Oersted in 1825?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer" onclick="checkanswer(this)" id="a3_1">Silicon</div>
+            <div class="answer" onclick="checkanswer(this)" id="a3_2">Aluminium</div>
+
+            <div class="answer" onclick="checkanswer(this)" id="a3_3">Chromium</div>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>

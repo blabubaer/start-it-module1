@@ -1,0 +1,44 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+div.page {
+    height: 100vh;
+    display: grid;
+    background-color: gray;
+    grid-template-columns: auto;
+    grid-template-rows: 200px 2fr 1fr 2fr 1fr 2fr 1fr;
+}
+
+.header {
+    
+    text-align: center
+}
+
+.answers {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    text-align: center;
+    font-weight: bold;
+    font-size: 120%;
+    border-style: solid;
+
+
+}
+
+.answer {
+    border-style:solid; 
+    padding: 50px  
+}
+
+.question {
+    text-align: center;
+    border-style: solid;
+    background-color: darkgrey;
+}
+h1 {
+    font-weight: bold;
+    font-size:100px ;
+}
