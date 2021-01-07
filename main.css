@@ -74,6 +74,12 @@ ul {
     padding: 0;
 }
 
+#menubars {
+    position: relative;
+    right: 10px;
+    top: 10px;
+}
+
 @media only screen and (max-width: 600px) {
     div.page {
         grid-template-columns: 1fr;
