@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 7</title>
+</head>
+<body>
+    <input type="range" name="Height" id="heightslider" min="100" max="800" oninput="showDiv()">
+    <input type="range" name="Width" id="widthslider" min="100" max="800" oninput="showDiv()">
+    <div id="resultat" onload="showDiv()"></div>
+
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var resultatHtmlDiv = document.getElementById('resultatHtml');
+        var heightslider = document.getElementById("heightslider");
+        var widthslider = document.getElementById("widthslider")
+
+        showDiv();
+
+        function showDiv() {
+            var areal = heightslider.value * widthslider.value
+            var perimeter = (heightslider.value * 2) + (widthslider.value*2)
+            resultatDiv.innerHTML = '<div style="'
+                + 'width: ' + widthslider.value + 'px;'
+                + 'height: ' + heightslider.value + 'px;'
+                + 'background-color: red;'
+                + '">'
+                + 'Areal is =' + areal.toString() + 'px and the Perimeter is =' + perimeter.toString() + 'px'
+                +'</div>';
+        }
+    </script>
+</body>
+</html>
