@@ -16,10 +16,29 @@ div.page {
 div.header {
     background-color: rgb(26, 91, 230);
     grid-area: header;
-    text-align: center;
-    color: white;
-    
+    color: white;  
 
+}
+.navbar {
+    display: grid ;
+    grid-template-columns: 1fr 50px;
+}
+
+.titel {
+    text-align: center;
+
+    grid-column: 1;
+
+}
+.icon {
+    position:relative;
+    top: 40%;
+    grid-column: 2;
+    
+}
+.menubar {
+    background-color: red;
+    grid-row: 1 / span 2;
 }
 
 div.menu {

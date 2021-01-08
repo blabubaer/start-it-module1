@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numberlock</title>
+    <style>
+        body {
+            margin:0px;
+            padding: 0px;
+        }
+        .page {
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 150px 1fr 1fr 1fr;
+            grid-template-areas:    'head head head' 
+                                    'b1 b2 b3'
+                                    'b4 b5 b6'
+                                    'b7 b8 b9';
+            background-color: steelblue
+        }
+        .page > .head {
+            background-color: grey;
+            grid-area: head;
+            text-align: center;
+        }
+        .button {
+            text-align: center;
+            border-style: solid;
+            padding-top: 30%;
+            font-size: 200%;
+            font-weight: bold;
+        }
+        .display {
+            margin-left: 5%;
+            margin-right: 5%;
+            border-style: solid;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            height: 40%;
+        }
+        .display > div {
+            border-style: solid;
+            text-align: center;
+            font-size: 200%;
+            font-weight: bold;
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="head">
+            <h1>Unlock this lock for the ultimate prize!</h1>
+            <div class="display">
+                <div id="d0"></div>
+                <div id="d1"></div>
+                <div id="d2"></div>
+                <div id="d3"></div>
+            </div>
+        </div>
+        <div class="button">1</div>
+        <div class="button">2</div>
+        <div class="button">3</div>
+        <div class="button">4</div>
+        <div class="button">5</div>
+        <div class="button">6</div>
+        <div class="button">7</div>
+        <div class="button">8</div>
+        <div class="button">9</div>
+
+    </div>
+
+    <script>
+        const buttons = document.getElementsByClassName("button")
+        var entered = []
+        var solution = ["3","8","1","2"]
+        function display () {
+            for (let i in entered ) {
+                document.getElementById("d"+i).innerHTML = entered[i]
+            }
+        }
+        function checking() {
+            var counter = 0
+            for (let i in entered) {
+                if (entered[i] == solution[i]) {
+                    document.getElementById("d"+i).style.backgroundColor = "green"
+                    counter ++
+                }
+                else {
+                    document.getElementById("d"+i).style.backgroundColor = "red"
+                }
+            if (counter == 4) {
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+            }
+                }
+            counter = 0
+            setTimeout(function(){
+                entered = []
+                document.getElementById("d1").style.backgroundColor = "";
+                document.getElementById("d2").style.backgroundColor = "";
+                document.getElementById("d3").style.backgroundColor = "";
+                document.getElementById("d0").style.backgroundColor = "";
+                document.getElementById("d0").innerHTML = "";
+                document.getElementById("d1").innerHTML = "";
+                document.getElementById("d2").innerHTML = "";
+                document.getElementById("d3").innerHTML = "";
+
+                },2000)
+        }
+        for (i in buttons) {
+            buttons[i].onclick = function() {
+                entered.push(this.innerHTML)
+                display()
+                if (entered.length == 4) {
+                    checking()  
+                }
+
+
+            }
+        }
+        function loser() {
+            entered = []
+            document.getElementById("d1").style.backgroundColor = "";
+            document.getElementById("d2").style.backgroundColor = "";
+            document.getElementById("d3").style.backgroundColor = "";
+            document.getElementById("d0").style.backgroundColor = "";
+            document.getElementById("d0").innerHTML = "";
+            document.getElementById("d1").innerHTML = "";
+            document.getElementById("d2").innerHTML = "";
+            document.getElementById("d3").innerHTML = "";
+
+        }
+
+    </script>
+</body>
+</html>
