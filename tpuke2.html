@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamproject Uke 2 - Team Fønix</title>
+    <style>
+        body {
+            background-color: black;
+            background-image: url("https://i.gifer.com/2mup.gif");
+        }
+        .page {
+
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            margin-top: 25%
+        }
+        .row {
+            display: flex;
+            height: 200px;
+            width: 600px;
+            background-color: cadetblue;
+        }
+        .box {
+            height: 200px;
+            width: 200px;
+            background-color: blueviolet;
+            border-style: solid;
+        }
+        .buttonrow {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: red;
+            color: black;
+            border-radius: 5px;
+            text-align: center;
+            padding: 15px 32px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="row">
+            <div class="box" id="1" style="background-color: cadetblue;"></div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3" style="background-color: cadetblue;"></div>
+        </div>
+        <div class="row">
+            <div class="box" id="4"></div>
+            <div class="box" id="5" style="background-color: cadetblue;"></div>
+            <div class="box" id="6"></div>
+        </div>
+        <div class="row">
+            <div class="box" id="7" style="background-color: cadetblue;"></div>
+            <div class="box" id="8"></div>
+            <div class="box" id="9" style="background-color: cadetblue;"></div>
+        </div>
+
+    </div>
+    <div class="buttonrow"><button class="button" onclick="start()">Start</button></div>
+    
+    <script>
+        var boxes = []
+        for (var box of document.getElementsByClassName("box")) {
+            boxes.push(box)
+        }
+        var solution = []
+        var round = 5
+        function start() {
+            var i = 0
+            while (i <= round) {
+                var number =getRndInteger(0,8)
+                solution.push(number)
+                changecolor(number)
+                i++   
+            }
+        }
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+        function changecolor(boxnumber) {
+            boxes[boxnumber].style.backgroundColor = "red"
+            setTimeout(function() {
+                console.log(boxnumber)
+                boxes[boxnumber].style.backgroundColor = ""
+                
+            }, 800);
+        }
+
+    </script>
+</body>
+</html>
