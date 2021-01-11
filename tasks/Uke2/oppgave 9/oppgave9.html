@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 9</title>
+    <style>
+        body {
+            background-color: lightslategray;
+        }
+        .header {
+            background-color: lightslategray;
+            text-align: center;
+        }
+        .display {
+            height: 200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: lightgrey;
+            align-items: center;
+            
+        }
+        .dpbox {
+            background-color: pink;
+            height: 150px;
+            width: 150px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+
+        }
+        .title {
+            text-align: center;
+        }
+        .choosers {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-areas: "border bg-color text-color text-pos";
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Choose a box and style away!</h1>
+    </div>
+    <div class ="display">
+        <div class="dpbox" id="dp1" onclick="changeChoosers(this)" style="text-align: center;background-color: pink; color: black; text-align: center; ">Box 1</div>
+        <div class="dpbox" id="dp2" onclick="changeChoosers(this)" style="text-align: center;background-color: pink; color: black; text-align: center; ">Box 2</div>
+        <div class="dpbox" id="dp3" onclick="changeChoosers(this)" style="text-align: center;background-color: pink; color: black; text-align: center; ">Box 3</div>
+        <div class="dpbox" id="dp4" onclick="changeChoosers(this)" style="text-align: center;background-color: pink; color: black; text-align: center; ">Box 4</div>
+        <div class="dpbox" id="dp5" onclick="changeChoosers(this)" style="text-align: center;background-color: pink; color: black; text-align: center; ">Box 5</div>
+    </div>
+    <div class="choices">
+        <div class="title"><h3>You are working on box:</h3><h3 id="boxname">Box1</h3></div>
+        <div class="choosers">
+            <div grid-area="border">
+                <ul>
+                    <li><input type="checkbox" id="border-onoff" name="Border On/Off" onchange="changeBox()" ><label for="border-onoff">Borders On/Off</label></li>
+                    <li><input type="checkbox" id="border-bold" name="Border bold" onchange="changeBox()"><label for="border-bold">Borders Bold</label></li>
+                    <li><input type="checkbox" id="border-dotted" name="Border dotted" onchange="changeBox()"><label for="border-dotted">Borders dotted</label></li>
+                </ul>
+            </div>
+            <div grid-area="bg-color">
+                <label for="bg-color">Please choose the background color:</label><br>
+                <select name="bg-color" id="bg-color" onchange="changeBox()">
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <option value="turquoise">Turquoise</option>
+                </select>
+            </div>
+            <div grid-area="text-color">
+                <label for="text-color">Please choose the text color:</label><br>
+                <select name="text-color" id="text-color" onchange="changeBox()">
+                    <option value="black">Black</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                </select>
+            </div>
+            <div grid-area="text-pos">
+                <label for="text-pos">Please choose the text position:</label><br>
+                <select name="text-pos" id="text-pos" onchange="changeBox()">
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="code.js"></script>
+</body>
+</html>
