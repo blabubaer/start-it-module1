@@ -7,7 +7,6 @@
     <style>
         body {
             background-color: black;
-            background-image: url("https://i.gifer.com/2mup.gif");
         }
         .page {
 
@@ -50,50 +49,60 @@
             font-size: 16px;
             font-weight: bold;
         }
+        h2{
+            color: red;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
     </style>
 </head>
 <body>
     <div class="page">
         <div class="row">
-            <div class="box dark" id="1"></div>
-            <div class="box" id="2"></div>
-            <div class="box dark" id="3"></div>
+            <div class="box dark" id="0"></div>
+            <div class="box" id="1"></div>
+            <div class="box dark" id="2"></div>
         </div>
         <div class="row">
-            <div class="box" id="4"></div>
-            <div class="box dark" id="5"></div>
-            <div class="box" id="6"></div>
+            <div class="box" id="3"></div>
+            <div class="box dark" id="4"></div>
+            <div class="box" id="5"></div>
         </div>
         <div class="row">
-            <div class="box dark" id="7"></div>
-            <div class="box" id="8"></div>
-            <div class="box dark" id="9"></div>
+            <div class="box dark" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box dark" id="8"></div>
         </div>
 
     </div>
-    <div class="buttonrow"><button class="button" onclick="game()">Start</button></div>
+    <div class="buttonrow">
+        <h2 id="roundnumber"></h2>
+        <button class="button" onclick="game()">Start</button>
+        <h2 id="highscore"></h2>
+    </div>
     
     <script>
         var boxes = []
         for (var box of document.getElementsByClassName("box")) {
             boxes.push(box)
         }
-// up is just to get the list
+        
         var highscore = 0
         var solution = []
         var round = solution.length
+        var clicks = 0
+
         function getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
         
         function game() {
-            start()
+            document.getElementById("roundnumber").innerHTML = "Rounds: " + round
+            newfield()
             play()
-            listen()
-
         }
 
-        function start() {
+        function newfield() {
             var number = getRndInteger(0,8)
             solution.push(number)
 
@@ -112,34 +121,57 @@
                     boxes[solution[i]].style.backgroundColor = "red" 
                 }
                 else {
+                    listen()
                     clearInterval(interval)
                 }
                 i++
-        }, 800);
+            }, 800);
             i =0
-            console.log("Runde:" + round)
+ 
         }
 
-        function listen() {
-            var clicks = 0
-            console.log("Lösung: " + solution)
-            console.log("Runde:" + round)
-            for (var box of boxes) {
-                box.addEventListener("click", function() {
-                    clicks++
-                    if ((this.id-1) != solution[clicks-1] ) {
-                        console.log(round)  
-                        if (round > highscore) {
-                            alert("You lost... but WOW! New Highscore")
-                            highscore = round
-                        }
-                        else {
-                            alert("You lost...")
-                        }
-                        reset() 
+
+        function reset() {
+            stoplistening()
+            clicks = 0
+            round = 0
+            solution =[]
+
+        }
+        function check() {
+            if (round > 0) {
+                clicks++
+                if ((this.id) != solution[clicks-1] ) {
+                    console.log(this.id)  
+                    if (round > highscore) {
+                        alert("You lost... but WOW! New Highscore")
+                        highscore = round
+                        document.getElementById("highscore").innerHTML = "Highscore: " + highscore
                     }
-                    clicks = 0 
-                })
+                    else {
+                        alert("You lost...")
+                    }
+                    reset()
+                    return
+                    
+                }
+
+                if (clicks == round) {
+                    clicks = 0
+                    stoplistening()
+                    game()
+                }
+            }
+
+        }
+        function listen() {
+            for (var box of boxes) {
+                box.addEventListener("click", check )
+            }
+        }
+        function stoplistening() {
+            for (var box of boxes) {
+                box.removeEventListener("click", check )
             }
         }
 
