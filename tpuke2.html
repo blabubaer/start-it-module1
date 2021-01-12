@@ -57,6 +57,8 @@
     </style>
 </head>
 <body>
+
+<!-- these are the displayed boxes-->
     <div class="page">
         <div class="row">
             <div class="box dark" id="0"></div>
@@ -75,6 +77,7 @@
         </div>
 
     </div>
+<!-- this is the row below the boxes with the button and the displays (could be done a little nicer so the start button doesnt move before the first highscore is reached. but I'm lazy...)-->
     <div class="buttonrow">
         <h2 id="roundnumber"></h2>
         <button class="button" onclick="game()">Start</button>
@@ -82,33 +85,34 @@
     </div>
     
     <script>
+// registers all boxes here 
         var boxes = []
         for (var box of document.getElementsByClassName("box")) {
             boxes.push(box)
         }
-        
+// declaration of all the necessary variables
         var highscore = 0
         var solution = []
         var round = solution.length
         var clicks = 0
-
+// to get a radom boxnumber
         function getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
-        
+// the main game function. Its called each time the start button is pressed and each time the correct frequenz is put in       
         function game() {
             document.getElementById("roundnumber").innerHTML = "Rounds: " + round
             newfield()
             play()
         }
-
+// generates a new solution field each time the round was cleard and at the beginning of the game and ads it to the solution list
         function newfield() {
             var number = getRndInteger(0,8)
             solution.push(number)
 
         }
 
-
+// play off the sequenz of boxes that is indicated in the solution. the list solution is iterated and each solution found triggers the change to color red. After the time interval the color returns. If no further solution is present the interval stops
         function play() {
             var i = 0
             round = solution.length
@@ -130,7 +134,7 @@
  
         }
 
-
+// resets the playing field after a failure
         function reset() {
             stoplistening()
             clicks = 0
@@ -138,6 +142,7 @@
             solution =[]
 
         }
+// is called each time an click on a box occures. checks if the clicked field is the same as the one that was displayed before and in the right sequence
         function check() {
             if (round > 0) {
                 clicks++
@@ -164,43 +169,19 @@
             }
 
         }
+// makes it possible to press the boxes
         function listen() {
             for (var box of boxes) {
                 box.addEventListener("click", check )
             }
         }
+// so that you cant press the boxes while the sequence is playing
         function stoplistening() {
             for (var box of boxes) {
                 box.removeEventListener("click", check )
             }
         }
 
-
-
-
-
-/* 
-        function start() {
-            var i = 0
-            while (i <= round) {
-                var number =getRndInteger(0,8)
-                solution.push(number)
-                changecolor(number)
-                i++   
-            }
-        }
-
-        function getRndInteger(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-        function changecolor(boxnumber) {
-            boxes[boxnumber].style.backgroundColor = "red"
-            setTimeout(function() {
-                console.log(boxnumber)
-                boxes[boxnumber].style.backgroundColor = ""
-                
-            }, 800);
-*/
     </script>
 </body>
 </html>
