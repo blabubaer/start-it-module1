@@ -31,6 +31,9 @@
             background-color: blueviolet;
             border-style: solid;
         }
+        .dark {
+            background-color: turquoise;
+        }
         .buttonrow {
             height: 50px;
             width: 100%;
@@ -52,31 +55,99 @@
 <body>
     <div class="page">
         <div class="row">
-            <div class="box" id="1" style="background-color: cadetblue;"></div>
+            <div class="box dark" id="1"></div>
             <div class="box" id="2"></div>
-            <div class="box" id="3" style="background-color: cadetblue;"></div>
+            <div class="box dark" id="3"></div>
         </div>
         <div class="row">
             <div class="box" id="4"></div>
-            <div class="box" id="5" style="background-color: cadetblue;"></div>
+            <div class="box dark" id="5"></div>
             <div class="box" id="6"></div>
         </div>
         <div class="row">
-            <div class="box" id="7" style="background-color: cadetblue;"></div>
+            <div class="box dark" id="7"></div>
             <div class="box" id="8"></div>
-            <div class="box" id="9" style="background-color: cadetblue;"></div>
+            <div class="box dark" id="9"></div>
         </div>
 
     </div>
-    <div class="buttonrow"><button class="button" onclick="start()">Start</button></div>
+    <div class="buttonrow"><button class="button" onclick="game()">Start</button></div>
     
     <script>
         var boxes = []
         for (var box of document.getElementsByClassName("box")) {
             boxes.push(box)
         }
+// up is just to get the list
+        var highscore = 0
         var solution = []
-        var round = 5
+        var round = solution.length
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+        
+        function game() {
+            start()
+            play()
+            listen()
+
+        }
+
+        function start() {
+            var number = getRndInteger(0,8)
+            solution.push(number)
+
+        }
+
+
+        function play() {
+            var i = 0
+            round = solution.length
+            var interval = setInterval(() => {
+                if (i > 0) {
+                    boxes[solution[i-1]].style.backgroundColor = ""
+                }
+  
+                if (i < round) {
+                    boxes[solution[i]].style.backgroundColor = "red" 
+                }
+                else {
+                    clearInterval(interval)
+                }
+                i++
+        }, 800);
+            i =0
+            console.log("Runde:" + round)
+        }
+
+        function listen() {
+            var clicks = 0
+            console.log("Lösung: " + solution)
+            console.log("Runde:" + round)
+            for (var box of boxes) {
+                box.addEventListener("click", function() {
+                    clicks++
+                    if ((this.id-1) != solution[clicks-1] ) {
+                        console.log(round)  
+                        if (round > highscore) {
+                            alert("You lost... but WOW! New Highscore")
+                            highscore = round
+                        }
+                        else {
+                            alert("You lost...")
+                        }
+                        reset() 
+                    }
+                    clicks = 0 
+                })
+            }
+        }
+
+
+
+
+
+/* 
         function start() {
             var i = 0
             while (i <= round) {
@@ -97,8 +168,7 @@
                 boxes[boxnumber].style.backgroundColor = ""
                 
             }, 800);
-        }
-
+*/
     </script>
 </body>
 </html>

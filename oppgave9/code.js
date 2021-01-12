@@ -62,11 +62,20 @@ function changeChoosers(box) {
 
 function changeBox() {
     var uBox = idName[cBox]
+    
+    if (borderDotted.checked) {
+        uBox.borderStyle = "dotted"
+    else {
+        uBox.borderStyle = ""
+    }
+    
     if (borderOnoff.checked) {
         uBox.borderStyle = "solid"
     }
-    if (borderDotted.checked) {
-        uBox.borderStyle = "dotted"
+    else {
+        uBox.borderStyle = ""
+    }
+
     }
     if (borderBold.checked) {
         uBox.borderWidth = "thick"
