@@ -80,11 +80,27 @@
         const buttons = document.getElementsByClassName("button")
         var entered = []
         var solution = ["3","8","1","2"]
+
+        // makes an onclick eventhandler for all the "button" fields This event starts the display function until 4 buttons have been pressend. then it starts checking function
+        for (i in buttons) {
+            buttons[i].onclick = function() {
+                entered.push(this.innerHTML)
+                display()
+                if (entered.length == 4) {
+                    checking()  
+                }
+
+
+            }
+        }
+        
+// Makes that all buttons that have been pushed (which is saved in entered) appear in the dislpay area  
         function display () {
             for (let i in entered ) {
                 document.getElementById("d"+i).innerHTML = entered[i]
             }
         }
+        //this checks if the numbered buttons are the same as the solution with the same sequence. if they are right it opens the winner and makes the background green else it makes the display red and resets the game
         function checking() {
             var counter = 0
             for (let i in entered) {
@@ -112,29 +128,6 @@
                 document.getElementById("d3").innerHTML = "";
 
                 },2000)
-        }
-        for (i in buttons) {
-            buttons[i].onclick = function() {
-                entered.push(this.innerHTML)
-                display()
-                if (entered.length == 4) {
-                    checking()  
-                }
-
-
-            }
-        }
-        function loser() {
-            entered = []
-            document.getElementById("d1").style.backgroundColor = "";
-            document.getElementById("d2").style.backgroundColor = "";
-            document.getElementById("d3").style.backgroundColor = "";
-            document.getElementById("d0").style.backgroundColor = "";
-            document.getElementById("d0").innerHTML = "";
-            document.getElementById("d1").innerHTML = "";
-            document.getElementById("d2").innerHTML = "";
-            document.getElementById("d3").innerHTML = "";
-
         }
 
     </script>
