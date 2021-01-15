@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="function.js"></script>
+    <script>
+        QUnit.test("Date test basic", function (assert) {
+            const isValid = isDateValid('15.12.1989');
+            assert.equal(isValid , true);
+        });
+
+        QUnit.test("test 2", function (assert) {
+            const isValid = isDateValid('15.120.1989');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 3", function (assert) {
+            const isValid = isDateValid('15.12,1989');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 4", function (assert) {
+            const isValid = isDateValid('15.12.89');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 5", function (assert) {
+            const isValid = isDateValid('15.123.589');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 6", function (assert) {
+            const isValid = isDateValid('15.13.1989');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 7", function (assert) {
+            const isValid = isDateValid('55.12.1989');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("test 8", function (assert) {
+            const isValid = isDateValid('31.11.89');
+            assert.equal(isValid , false);
+        });
+        QUnit.test("Test 9", function (assert) {
+            const isValid = isDateValid('30.02.89');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("Test 10", function (assert) {
+            const isValid = isDateValid('29.02.89');
+            assert.equal(isValid , false);
+        });
+
+        QUnit.test("29 February true", function (assert) {
+            const isValid = isDateValid('29.02.2000');
+            assert.equal(isValid , true);
+        });
+
+
+    </script>
+</body>
+</html>
