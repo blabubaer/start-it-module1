@@ -33,14 +33,20 @@ function split(date) {
     month = date.slice(3,5)
     year = date.slice(6)
 }
+
+// tests if the year is valid
 function yeartest(year) {
     if (year >= "0000" && year <= "9999") return true
     else false
 }
+
+//tests if the month is valiud
 function monthtest(month) {
     if(month >= 1 && month <= 12) return true
     else return false
 }
+
+//tests if the day is valid for the month and year
 function daytest(day, month, year) {
     const numberofdays = { 31: [1,3,5,7,8,10,12], 28:[2] ,30:[4,6,9,11]}
     if (month == 2 && (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) && (day>=1 && day<=29)) return true
@@ -49,4 +55,6 @@ function daytest(day, month, year) {
     }
     return false
 }
+
+//Testoutput for my birthdate
 console.log(isDateValid("15.12.1989"))

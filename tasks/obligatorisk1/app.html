@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obligatorisk Oppgave 1  / Module 1</title>
+    <script src="function.js"></script>
+</head>
+<body>
+    <h1>Obligatorisk Oppgave 1 av Module 1</h1>
+    <h4>Please enter your date below. The format should be: dd.mm.yyyy </h4>
+    <label for="datetester">Date:</label>
+    <input type="text" id="datetester" value="Enter Date here!">
+    <button onclick="runtest()">Check</button>
+    <div id="result"></div>
+
+    <script >
+        function runtest() {
+            if (isDateValid(document.getElementById("datetester").value)) {
+                document.getElementById("result").innerText = "This is a valid date."
+            }
+            else document.getElementById("result").innerText = "This date is invalid. Please try again"
+
+        }
+    </script>
+</body>
+</html>
