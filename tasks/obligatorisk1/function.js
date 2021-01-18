@@ -1,12 +1,8 @@
-//Variables
-var day = ""
-var month = ""
-var year = ""
 
 //Main function
 function isDateValid(date) {
     split(date)
-    if( length(date) && dotsAtPos(date) && yeartest(year) && monthtest (month) && daytest(day, month, year)) return true
+    if( length(date) && dotsAtPos(date) && yeartest(date) && monthtest (date) && daytest(date)) return true
     else return false
 }
 
@@ -29,25 +25,34 @@ function dotsAtPos(date) {
 
 //splits the date for further use
 function split(date) {
-    day = date.slice(0,2)
-    month = date.slice(3,5)
-    year = date.slice(6)
+    var splitted = []
+    splitted.push(date.slice(0,2))
+    splitted.push(date.slice(3,5))
+    splitted.push(date.slice(6))
+    return splitted
 }
 
 // tests if the year is valid
-function yeartest(year) {
+function yeartest(date) {
+    var year = split(date)[2]
     if (year >= "0000" && year <= "9999") return true
     else false
 }
 
 //tests if the month is valiud
-function monthtest(month) {
+function monthtest(date) {
+    var month = split(date)[1]
     if(month >= 1 && month <= 12) return true
     else return false
 }
 
 //tests if the day is valid for the month and year
-function daytest(day, month, year) {
+function daytest(date) {
+    var day = split(date)[0]
+    var month = split(date)[1]
+    var year = split(date)[2]
+
+
     const numberofdays = { 31: [1,3,5,7,8,10,12], 28:[2] ,30:[4,6,9,11]}
     if (month == 2 && (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) && (day>=1 && day<=29)) return true
     for (var key in numberofdays) {
