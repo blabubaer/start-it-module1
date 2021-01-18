@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tre på rad</title>
+    <style type="text/css">
+        div.section {
+            color: green;
+            background-color: lightgray;
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 2px;
+            font-size: 500%;
+            font-family: helvetica;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            div.first {
+                clear: left;
+            }
+    </style>
+</head>
+<body onload="show()">
+    <div id="body"></div>
+
+
+    <script type="text/javascript">
+        
+        //model
+
+        //controller
+
+        var board = ['x','o','', '','','', '','','' ]
+
+        //view
+        function show() {
+            var body = document.getElementById("body");
+            for (var i in board) {
+                if (i == 0 || i==3 || i == 6) {
+                    body.innerHTML += `<div id="${i}" class='first' onclick="chose(this)">${board[i]}</div>`
+                    continue
+                }
+                body.innerHTML += `<div id="${i}" onclick="chose(this)">${board[i]}</div>`                
+            }
+        }
+
+
+        function setX(divElement) {
+            if (divElement.innerHTML !== 'x' && divElement.innerHTML !== 'o') {
+                divElement.innerHTML = 'x';
+
+                var divs1 = document.getElementsByTagName('div');
+                var divs2 = new Array();
+                for (var i = 0; i < divs1.length; i++) {
+                    if (divs1[i].innerHTML !== 'x' && divs1[i].innerHTML !== 'o') {
+                        divs2.push(divs1[i]);
+                    }
+                }
+
+                if (divs2.length > 0) {
+                    var index = Math.floor(Math.random() * divs2.length);
+                    divs2[index].innerHTML = 'o';
+                    divs2[index].style.color = 'blue';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
