@@ -30,10 +30,87 @@
     <script type="text/javascript">
         
         //model
+        var board = ['','','', '','','', '','','' ]
+        score_x = 0
+        score_o = 0
+        var gameover = false
 
         //controller
 
-        var board = ['x','','', '0','','', '','','' ]
+        function chose(field) {
+            if (board[field.id] == "") {
+                board[field.id] = "x"
+            }
+            show()
+            if (test()) winner("x")
+            else other()
+            
+        }
+
+        function test() {
+            if (gameover) return
+            if((board[0]==board[1]&& board[0] == board[2])&&board[0]!= ""){
+                return true
+            }
+            else if ((board[3]== board[4]&&board[3]==board[5])&&board[3]!= ""){
+                return true
+            }
+            else if ((board[6]== board[7]&&board[6]==board[8])&&board[6]!= ""){
+                return true
+            }
+            else if((board[0]== board[4]&&board[0]==board[8])&&board[0]!= "") {
+                return true
+            }
+            else if((board[2]== board[4]&&board[2]==board[6])&&board[2]!= "") {
+                return true
+            }
+            else if ((board[0]== board[3]&&board[0]==board[6])&&board[0]!= ""){
+                return true
+            }
+            else if((board[1]== board[4]&&board[1]==board[7])&&board[1]!= "") {
+                return true
+            }
+            else if((board[2]== board[5]&&board[2]==board[8])&&board[2]!= "") {
+                return true
+            }
+        }
+
+        function winner(winner) {
+            if (winner == "x") {
+                score_x ++
+                alert("Winner, Winner, ChickenDinner")
+            }
+            else if( winner == "o") {
+                score_o ++
+                alert("HAHA - Looser...")
+            }
+            gameover = true
+        }
+        
+        function other() {
+            var empty = Array.from(board.keys()).filter(i=>board[i]==='')
+            var random = empty[(getRndInteger(0,(empty.length-1)))]
+            board[random] = "o"
+            if (test()) winner("o")
+            show()
+        }
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+        function reset() {
+            board =  ['','','', '','','', '','','' ]
+            score_x = 0
+            score_o = 0
+            show()
+            gameover = false
+        }
+        function restart() {
+            board =  ['','','', '','','', '','','' ]
+            show()
+            gameover = false
+        }
+
 
         //view
         function show() {
@@ -46,33 +123,11 @@
                 }
                 body.innerHTML += `<div id="${i}" onclick="chose(this)">${board[i]}</div>`                
             }
+            body.innerHTML += `</br><button type="button" onclick="reset()">Reset</button><br><br><button type="button" onclick="restart()">New Round</button>`
+            body.innerHTML += `<p>Score X = ${score_x}</p> <br> <br> <p> Score 0 = ${score_o}</p>`
         }
 
-        function chose(field) {
-            if (board[field.id] == "") {
-                board[field.id] = "x"
-            }
-            show()
-            if (test()) winner()
-        }
-
-        function test() {
-            if((board[0]==board[1]&& board[0] == board[2])&&board[0]!= ""){
-                alert("Winner 1")
-            }
-            else if ((board[3]== board[4]&&board[3]==board[5])&&board[3]!= ""){
-                alert("Winner 2")
-            }
-            else if ((board[6]== board[7]&&board[6]==board[8])&&board[6]!= ""){
-                alert("Winner 3")
-            }
-            else if((board[0]== board[4]&&board[0]==board[8])&&board[0]!= "") {
-                alert("Winner 4")
-            }
-            else if((board[2]== board[4]&&board[2]==board[6])&&board[2]!= "") {
-                alert("Winner 5")
-            }
-        }
+       
     </script>
 </body>
 </html>
