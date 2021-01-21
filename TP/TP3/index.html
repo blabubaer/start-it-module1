@@ -6,15 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="1"></div>
+    <img src="myimage.jpg" alt="picture">
+    <br>
+    <div id="base">
+
+    </div>
     
     <script>
         var image = new Image();
         image.onload = cutImageUp;
         image.src = 'myimage.jpg';
-        widthOfOnePiece = "50px"
-        heightOfOnePiece = "50px"
-        
+        widthOfOnePiece = 50;
+        heightOfOnePiece = 50;
+        numColsToCut = 10;
+        numRowsToCut = 10;
+
 
 
         function cutImageUp() {
@@ -33,9 +39,16 @@
             // imagePieces now contains data urls of all the pieces of the image
 
             // load one piece onto the page
-            var anImageElement = document.getElementById('1');
-            anImageElement.src = imagePieces[0];
+            //console.log(imagePieces[1])
+            //var anImageElement = document.getElementById('1');
+            //anImageElement.src = imagePieces[0];
+            for (var i in imagePieces) {
+                document.getElementById("base").innerHTML += `<img src="${imagePieces[i]}">`
+
             }
+            
+        
+        }
     </script>
 </body>
 </html>
