@@ -10,12 +10,37 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
-    <script src="lib.js"></script>
+    <script src="controller.js"></script>
+
     <script>
-        QUnit.test("fix - 'terje'", function (assert) {
-            const actual = fixText('terje');
-            const expected = 'Terje';
-            assert.equal(actual, expected);
+        var chosenBar;
+        var numbers;
+        var inputValue;
+        function show() { }
+
+        QUnit.test("choose rectangle 1", function (assert) {
+            chosenBar = null
+            choose(1)
+            assert.equal(chosenBar, 1);
+        });
+        QUnit.test("choose rectangle 2", function (assert) {
+            chosenBar = 1
+            choose(4)
+            assert.equal(chosenBar, 4);
+        });
+        QUnit.test("delete the second rectange from left", function (assert) {
+            chosenBar = 2
+            numbers = [1,2,3]
+            deleteBar()
+            assert.equal(numbers[1], 3);
+            assert.equal(chosenBar, null);
+            assert.equal(numbers.length, 2);
+        });
+        QUnit.test("add one rectangle", function (assert) {
+            numbers = []
+            inputValue = 3
+            addbar()
+            assert.equal(numbers[0], 3);
         });
 
         
