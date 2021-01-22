@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 9e</title>
+</head>
+<body onload="show()">
+    <div id="app">
+
+    </div>
+    <script>
+        //modell
+        var backgroundcolor = ""
+        var color = ""
+        var div = `<div style="background-color:${backgroundcolor};color:${color}">Blablabla</div>`
+        //view
+            function show() {
+                var html = `
+                <select id="select size="5" onchange="changecolor(this.options[this.selectedIndex].text)">
+                        <option>black</option>
+                        <option>darkblue</option>
+                        <option>lightgrey</option>
+                        <option>lightgreen</option>
+                        <option>indianred</option>
+                </select>
+                <br>
+
+                ${div}
+
+                `;
+                document.getElementById("app").innerHTML = html;
+                    
+            }
+
+        //controller
+            function changecolor(chosencolor) {
+                console.log(chosencolor)
+                backgroundcolor = chosencolor
+                if (chosencolor == "black" || chosencolor == "darkblue") {
+                    color = "white"
+                }
+                else { 
+                    color = "black"
+                }
+
+                show()
+            }
+
+    </script>
+</body>
+</html>
