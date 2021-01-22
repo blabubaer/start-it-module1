@@ -11,14 +11,19 @@
     show();
     function show() {
         let svgInnerHtml = '';
+        let buttonstate = ""
         for (let i = 0; i < numbers.length; i++) {
             svgInnerHtml += createBar(numbers[i], i + 1);
         }
         var valgt = ""
         if (chosenBar == null) {
             valgt = "ingen"
+            buttonstate = "disabled"
         }
-        else valgt = chosenBar
+        else {
+            valgt = chosenBar
+            buttonstate = ""
+        }
         contentDiv.innerHTML = `
             <svg id="chart" width="500" viewBox="0 0 80 60">
                 ${svgInnerHtml}
@@ -28,8 +33,8 @@
             Verdi:
             <input type="number" min="1" max="10" oninput="inputValue = this.value" />
             <button>Legg til stolpe</button>
-            <button disabled>Endre valgt stolpe</button><br />
-            <button disabled>Fjerne valgt stolpe</button>
+            <button ${buttonstate}>Endre valgt stolpe</button><br />
+            <button ${buttonstate} onclick="deleteBar()">Fjerne valgt stolpe</button>
             `;
     }
 
@@ -63,4 +68,11 @@
         }
         else {chosenBar = number}
         show()
+    }
+    function deleteBar() {
+        let pos = chosenBar-1
+        numbers.splice(pos, 1)
+        console.log(chosenBar)
+        show()
+
     }
