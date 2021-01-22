@@ -25,14 +25,14 @@
             buttonstate = ""
         }
         contentDiv.innerHTML = `
-            <svg id="chart" width="500" viewBox="0 0 80 110">
+            <svg id="chart" width="500" viewBox="0 0 80 60">
                 ${svgInnerHtml}
             </svg><br/>
             Valgt stolpe: <i>${valgt}</i>
             <br />
             Verdi:
             <input type="number" min="1" max="10" oninput="inputValue = this.value" id="inputvalue"/>
-            <button>Legg til stolpe</button>
+            <button onclick="addbar()">Legg til stolpe</button>
             <button ${buttonstate} onclick="change()">Endre valgt stolpe</button><br />
             <button ${buttonstate} onclick="deleteBar()">Fjerne valgt stolpe</button>
             `;
@@ -41,9 +41,9 @@
     function createBar(number, barNo) {
         const width = 8;
         const spacing = 2;
-        let x = (barNo - 1) * (width + spacing);
-        let height = number * 10;
-        let y = 110 - height;
+        let x = (barNo - 1) * (width + spacing) +1;
+        let height = number * 5;
+        let y = (60 - height)-1;
         let color = calcColor(1, 10, barNo);
         let style = ""
         if (barNo == chosenBar) {
@@ -79,10 +79,30 @@
 
     function change() {
         var inputvalue = document.getElementById("inputvalue").value
-        console.log(inputvalue)
         if (inputvalue>0 && inputvalue <=10) {
             numbers[chosenBar-1] = inputvalue
         }
-        else alert("Invalid Number entered. Please enter a number between 1 and 10")
+        else {
+            alert("Invalid Number entered. Please enter a number between 1 and 10") 
+            return
+        }
         show()
+    }
+
+    function addbar() {
+        var inputvalue = document.getElementById("inputvalue").value
+        if (numbers.length == 8) {
+            alert("Maximum number of Bars is 8. Please delet a bar before adding another.")
+            return
+        }
+        if (inputvalue>0 && inputvalue <=10) {
+            numbers.push(inputValue)
+        }
+        else{
+            alert("Invalid Number entered. Please enter a number between 1 and 10")
+            return
+        }
+        show()
+        
+
     }
