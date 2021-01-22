@@ -25,15 +25,15 @@
             buttonstate = ""
         }
         contentDiv.innerHTML = `
-            <svg id="chart" width="500" viewBox="0 0 80 60">
+            <svg id="chart" width="500" viewBox="0 0 80 110">
                 ${svgInnerHtml}
             </svg><br/>
             Valgt stolpe: <i>${valgt}</i>
             <br />
             Verdi:
-            <input type="number" min="1" max="10" oninput="inputValue = this.value" />
+            <input type="number" min="1" max="10" oninput="inputValue = this.value" id="inputvalue"/>
             <button>Legg til stolpe</button>
-            <button ${buttonstate}>Endre valgt stolpe</button><br />
+            <button ${buttonstate} onclick="change()">Endre valgt stolpe</button><br />
             <button ${buttonstate} onclick="deleteBar()">Fjerne valgt stolpe</button>
             `;
     }
@@ -43,7 +43,7 @@
         const spacing = 2;
         let x = (barNo - 1) * (width + spacing);
         let height = number * 10;
-        let y = 60 - height;
+        let y = 110 - height;
         let color = calcColor(1, 10, barNo);
         let style = ""
         if (barNo == chosenBar) {
@@ -73,6 +73,16 @@
         let pos = chosenBar-1
         numbers.splice(pos, 1)
         console.log(chosenBar)
+        chosenBar = null
         show()
+    }
 
+    function change() {
+        var inputvalue = document.getElementById("inputvalue").value
+        console.log(inputvalue)
+        if (inputvalue>0 && inputvalue <=10) {
+            numbers[chosenBar-1] = inputvalue
+        }
+        else alert("Invalid Number entered. Please enter a number between 1 and 10")
+        show()
     }
