@@ -1,0 +1,78 @@
+body {
+    background-color: cornflowerblue;
+}
+#app {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 3fr 5fr;
+    grid-template-rows: 100px 4fr 2fr;
+    grid-template-areas:"header header"
+                        "text picture"
+                        "chooser chooser";
+}
+
+.header {
+    grid-area: header;
+    background-color: cyan;
+    border-radius: 50px;
+    text-align: center;
+    font-size:x-large;
+    margin : 10px;
+}
+
+.text {
+    grid-area: text;
+    background-color: darkgrey;
+    border-style: solid;
+    border-radius: 50px;
+    padding: 30px;
+    font-size: 25px;
+}
+
+p {
+    margin: 20px;
+}
+
+h1 {
+
+    margin-top: 15px;
+    padding: 0px;
+}
+
+.picture {
+    grid-area: picture;
+}
+
+.chooser {
+    grid-area: chooser;
+    background-color: darkorchid;
+    border-radius: 50px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.button {
+    background-color: grey;
+    height: 4rem;
+    width:  12rem;
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 4rem;
+    border-radius: 40%;
+
+
+}
+.active {
+    background-color: green;
+    border-style: solid;
+}
