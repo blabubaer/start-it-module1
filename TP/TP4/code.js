@@ -1,15 +1,16 @@
 //Model
 var placeholder = ["_____","_____","_____"]
 class protagonist {
-    constructor(job, ride, area) {
+    constructor(job, ride, area,activebutton) {
         this.job = job
         this.ride = ride
         this.area = area
+        this.activebutton = activebutton
     }
 }
-var pirate = new protagonist("pirate", "ship", "ocean")
-var biker = new protagonist("biker", "motorbike", "dessert")
-var wizard = new protagonist("wizard","broomstick","magical forrest")
+var pirate = new protagonist("pirate", "ship", "ocean",["","",""])
+var biker = new protagonist("biker", "motorbike", "dessert",["","",""])
+var wizard = new protagonist("wizard","broomstick","magical forrest", ["","",""])
 var protagonists = [pirate,biker,wizard]
 
 show()
@@ -57,7 +58,9 @@ show()
             for (var a in list){
                 button = document.createElement("div");
                 button.innerText = list[a];
+                var addClass = protagonists[i].activebutton
                 button.classList.add("button")
+                button.style.backgroundColor = addClass[a]
                 button.id = a
                 button.onclick = function() {change(this);}
                 container.appendChild(button)
@@ -66,30 +69,32 @@ show()
         }
         
         chooser.classList.add("chooser")
-        
-
-
-
-
-
-       picture.classList.add("picture")
-
-
-
-
-
-
-       app.appendChild(header)
-       app.appendChild(text)
-       app.appendChild(picture)
-       app.appendChild(chooser)
+        picture.classList.add("picture")
+        app.appendChild(header)
+        app.appendChild(text)
+        app.appendChild(picture)
+        app.appendChild(chooser)
     
     
     }   
 //Controller
-function change(name) {
-    var row = name.id
-    placeholder[row] = name.innerText
+function change(button) {
+    placeholder[button.id] = button.innerText
+    console.log(button)
+    var q = button.innerText
+    console.log(q)
+    for (var p of protagonists) {
+        if(p.job == q || p.ride == q || p.area == q) {
+            if (p.activebutton[button.id] == "green") {
+                p.activebutton[button.id] == "" 
+            }
+            else p.activebutton[button.id] == "green"
+        }
+        console.log(p.activebutton)
+        console.log(pirate.activebutton)
+    }
+    pirate.activebutton[button.id] = "green"
     show()
+
 
 }
