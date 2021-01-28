@@ -8,12 +8,16 @@ class protagonist {
         this.activebutton = activebutton
     }
 }
-var pirate = new protagonist("pirate", "ship", "ocean",[".",".","."])
+var pirate = new protagonist("pirate", "ship", "ocean",["","",""])
 var biker = new protagonist("biker", "motorbike", "desert",["","",""])
 var wizard = new protagonist("wizard","broomstick","magical forrest", ["","",""])
 var protagonists = [pirate,biker,wizard]
+var testimage = new Image(400,250)
+testimage.src = "./src/desert.jpg"
+
 
 show()
+
 
 //View
     function show() {
@@ -70,21 +74,29 @@ show()
         
     //picture construction
         picture.classList.add("picture");
+        var canvas = document.createElement("canvas")
+        picture.appendChild(canvas)
+        canvas.id = "canvas"
+        canvas.width = 400
+        canvas.height = 250
+        canvas.style = "border:1px solid"
 
-
-
-
-
-
-
-
+    // build up page    
         app.appendChild(header)
         app.appendChild(text)
         app.appendChild(picture)
         app.appendChild(chooser)
-    
-    
-    }   
+        drawing() 
+        
+    }
+     // fill in canvas
+    function drawing () {
+        var can = document.getElementById("canvas");
+        var con = can.getContext('2d');
+        
+        con.drawImage(testimage,0,0, 400, 250);
+
+    }
 //Controller
 function change(button) {
     placeholder[button.id] = button.innerText

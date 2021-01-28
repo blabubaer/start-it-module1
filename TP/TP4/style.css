@@ -41,6 +41,7 @@ h1 {
 
 .picture {
     grid-area: picture;
+    padding-left: 50px;
 }
 
 .chooser {
