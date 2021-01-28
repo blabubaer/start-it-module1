@@ -8,16 +8,37 @@ class protagonist {
         this.activebutton = activebutton
     }
 }
-var pirate = new protagonist("pirate", "ship", "ocean",["","",""])
-var biker = new protagonist("biker", "motorbike", "desert",["","",""])
-var wizard = new protagonist("wizard","broomstick","magical forrest", ["","",""])
-var protagonists = [pirate,biker,wizard]
-var testimage = new Image(400,250)
-testimage.src = "./src/desert.jpg"
+var pirateboy = new protagonist("pirate", "ship", "ocean",["","",""])
+var bikerboy = new protagonist("biker", "motorbike", "desert",["","",""])
+var wizardboy = new protagonist("wizard","broomstick","forest", ["","",""])
+var protagonists = [pirateboy,bikerboy,wizardboy]
+var desert = new Image(400,250)
+desert.src = "./src/desert.jpg"
+var ocean = new Image(400,250)
+ocean.src = "./src/ocean.jpg"
+var forest = new Image(400,250);
+forest.src = "./src/forest.jpg"
+var pirate = new Image()
+pirate.src = "./src/pirate.png"
+var biker = new Image()
+biker.src = "./src/biker.png"
+var wizard = new Image()
+wizard.src = "./src/wizard.png"
+var ship = new Image()
+ship.src = "./src/ship.png"
+var motorbike = new Image()
+motorbike.src = "./src/motorbike.png"
+var broomstick = new Image()
+broomstick.src = "./src/broomstick.png"
+var kid = new Image()
+kid.src = "./src/kid.png"
 
 
-show()
 
+var scenery
+var occupation
+var accessory
+kid.onload = show;
 
 //View
     function show() {
@@ -93,8 +114,17 @@ show()
     function drawing () {
         var can = document.getElementById("canvas");
         var con = can.getContext('2d');
-        
-        con.drawImage(testimage,0,0, 400, 250);
+        con.clearRect(0,0,400,250)
+        if (scenery) con.drawImage(scenery,0,0, 400, 250);
+
+        con.drawImage(kid,50,100,100,150);
+        //draw occupation
+        if (occupation == biker) con.drawImage(occupation,60,100,75,75)
+        else if(occupation == pirate||occupation==wizard) con.drawImage(occupation,60,50,75,75)
+        //draw accessory
+        if(accessory == ship) con.drawImage(accessory,200,100,150,100)
+        else if(accessory == motorbike) con.drawImage(accessory,200,125,150,100)
+        else if(accessory == broomstick) con.drawImage(broomstick,200,100,100,150)
 
     }
 //Controller
@@ -111,6 +141,17 @@ function change(button) {
                 p.activebutton[button.id] = "green"
             }
         }
+        if(p.job == q) {
+            occupation = window[q]
+        }
+        else if (p.ride == q) {
+            accessory = window[q]
+        }
+        else if( p.area == q){
+            scenery = window[q]
+        }
+            
+        
 
     }
     show()
