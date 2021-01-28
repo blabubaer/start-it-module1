@@ -8,8 +8,8 @@ class protagonist {
         this.activebutton = activebutton
     }
 }
-var pirate = new protagonist("pirate", "ship", "ocean",["","",""])
-var biker = new protagonist("biker", "motorbike", "dessert",["","",""])
+var pirate = new protagonist("pirate", "ship", "ocean",[".",".","."])
+var biker = new protagonist("biker", "motorbike", "desert",["","",""])
 var wizard = new protagonist("wizard","broomstick","magical forrest", ["","",""])
 var protagonists = [pirate,biker,wizard]
 
@@ -68,8 +68,16 @@ show()
             chooser.appendChild(container)
         }
         
-        chooser.classList.add("chooser")
-        picture.classList.add("picture")
+    //picture construction
+        picture.classList.add("picture");
+
+
+
+
+
+
+
+
         app.appendChild(header)
         app.appendChild(text)
         app.appendChild(picture)
@@ -80,18 +88,18 @@ show()
 //Controller
 function change(button) {
     placeholder[button.id] = button.innerText
-    console.log(button)
     var q = button.innerText
-    console.log(q)
     for (var p of protagonists) {
+        p.activebutton[button.id] = ""
         if(p.job == q || p.ride == q || p.area == q) {
             if (p.activebutton[button.id] == "green") {
-                p.activebutton[button.id] == "" 
+                p.activebutton[button.id] = "" 
             }
-            else p.activebutton[button.id] == "green"
+            else {
+                p.activebutton[button.id] = "green"
+            }
         }
-        console.log("p.activebutton = " + p.activebutton)
-        console.log("pirate.activebutton = " + pirate.activebutton)
+
     }
     show()
 
