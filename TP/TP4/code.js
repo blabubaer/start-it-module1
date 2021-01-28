@@ -90,10 +90,9 @@ function change(button) {
             }
             else p.activebutton[button.id] == "green"
         }
-        console.log(p.activebutton)
-        console.log(pirate.activebutton)
+        console.log("p.activebutton = " + p.activebutton)
+        console.log("pirate.activebutton = " + pirate.activebutton)
     }
-    pirate.activebutton[button.id] = "green"
     show()
 
 
