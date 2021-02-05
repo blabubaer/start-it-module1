@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactiontime</title>
+    <style>
+        body {
+            background-color: hotpink;
+        }
+        #app {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+
+        }
+        .bulb {
+            border-radius : 50%;
+            background-color: grey;
+            height: 50px;
+            width: 50px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="app"></div>
+    <br>
+    <div>
+        <button type="button" onclick="start()">Start</button>
+        <button type="button" onclick="restart()">Restart</button>
+    </div>
+
+    <script>
+        //Model
+        var list = []
+        var starttime
+        var endtime
+
+        //View
+        restart()
+
+        function show(){
+            var app = document.getElementById("app")
+            while(app.firstChild) app.removeChild(app.lastChild);
+            var divs = ''
+
+            for (var i in list) {
+                var div =document.createElement('div')
+                div.classList.add('bulb')
+                if (list[i] == 'x') {
+                    div.style.backgroundColor = "yellow"
+                    div.onclick = function() { check();};
+                }
+                app.appendChild(div)
+            }
+        }
+
+        //Controller
+        function restart(){
+            list = []
+            starttime = ''
+            endtime = ''
+            for (var i=0; i<25; i++){
+                list.push('')
+            }
+
+            show()
+        }
+
+        function check(){
+            endtime = new Date().getTime()
+            var spentMilliseconds = Math.floor(endtime-starttime)
+            var spentSeconds = spentMilliseconds / 1000;
+            alert("It took you"+spentSeconds+"Seconds!")
+        }
+
+        function start(){
+            var num = getRndInteger(0,25)
+            list[num] = 'x'
+            starttime = new Date().getTime()
+            show()
+
+        }
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
+        }
+    </script>
+</body>
+</html>
