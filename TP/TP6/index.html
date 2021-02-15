@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: black;
+            color: black;
+            font-family: monospace;
+            font-size: 20px;
+        }
+        .soundButton {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            border-radius: 20%;
+            border: 2px solid white;
+            text-align: center;
+            cursor: pointer;
+        }
+        #app{
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: black;
+            padding: 15%; 
+        }
+        h1 {
+            text-align: center;
+            color: aqua;
+        }
+        p {
+            margin-top: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Play a Sound</h1>
+    <div id="app"></div>
+    <audio id="bubbles-s" src="./sound/bubbles.mp3"></audio>
+    <audio id="clay-s" src="./sound/clay.mp3"></audio>
+    <audio id="confetti-s" src="./sound/confetti.mp3"></audio>
+    <audio id="glimmer-s" src="./sound/glimmer.mp3"></audio>
+    <audio id="moon-s" src="./sound/moon.mp3"></audio>
+    <audio id="ufo-s" src="./sound/ufo.mp3"></audio>
+
+    <script>
+        // Model
+        var sounds = ['bubbles','clay','confetti','glimmer','moon','ufo']
+
+        // View
+        view();
+        function view(){
+            var html = '';
+            for(var i = 0; i < sounds.length; i++){
+                html += `
+                    <div class="soundButton" id="${sounds[i]}" onclick="start(this)"><p>${sounds[i]}</p></div>
+                `;
+            }
+            document.getElementById('app').innerHTML = html
+        }
+        
+        // Controller
+        function start(soundName) {
+            var sound = soundName.id
+            var audio = document.getElementById(sound+'-s');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
